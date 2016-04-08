@@ -97,10 +97,12 @@
     </android.support.design.widget.TextInputLayout>
 
     <TextView
-        android:layout_width="276dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="18dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text=""
+        android:layout_gravity="bottom|center"
         android:id="@+id/sorgu" />
 
     <EditText

@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout3"
-        android:layout_marginBottom="25dp">
+        android:layout_marginBottom="55dp">
 
         <EditText
             android:gravity="center"
@@ -32,8 +32,8 @@
             android:textSize="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/anahtarkelime"
-            android:hint=" Ister Kelime "
+            android:id="@+id/sehir"
+            android:hint="  Ister Sehir  "
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/linearLayout"
             android:layout_alignStart="@+id/linearLayout"
@@ -49,8 +49,8 @@
             android:textSize="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sehir"
-            android:hint=" Ister Sehir "
+            android:id="@+id/anahtarkelime"
+            android:hint="  Ister Kelime  "
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/linearLayout"
             android:layout_alignStart="@+id/linearLayout"
@@ -65,100 +65,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout3"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/linearLayout4">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="102dp"
-            android:layout_alignTop="@+id/linearLayout"
-            android:layout_alignBottom="@+id/linearLayout"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:layout_toEndOf="@+id/search"
-            android:layout_toRightOf="@+id/search"
-            android:id="@+id/linearLayout2">
-
-            <CheckBox
-                android:textSize="26dp"
-                android:layout_width="wrap_content"
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Otel"
-                android:id="@+id/checkBox"
-                android:checked="false"
-                android:onClick="checboxicin"
-
-                />
-
-            <CheckBox
-                android:textSize="26dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Camii"
-                android:id="@+id/checkBox2"
-                android:checked="false"
-                android:onClick="checboxicin"
-                 />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New RadioButton"
-                android:id="@+id/radioButton" />
-
-            <CheckBox
-                android:textSize="26dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cafe"
-                android:id="@+id/checkBox3"
-                android:checked="false"
-                android:onClick="checboxicin"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayout"
-            android:layout_alignBottom="@+id/linearLayout4"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
-
-
-            <CheckBox
-                android:textSize="26dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eylence"
-                android:id="@+id/checkBox4"
-                android:checked="false"
-                android:onClick="checboxicin"
-                />
-
-            <CheckBox
-                android:textSize="26dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yemek"
-                android:id="@+id/checkBox5"
-                android:checked="false"
-                android:onClick="checboxicin"/>
-
-            <CheckBox
-                android:textSize="26dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alışveriş"
-                android:id="@+id/checkBox6"
-                android:checked="false"
-                android:onClick="checboxicin"
-                />
-
-        </LinearLayout>
+                android:gravity="center"
+                android:orientation="horizontal">
+                <RadioButton android:id="@+id/cafe"
+                    android:textSize="19dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cafe"
+                    android:onClick="onRadioButtonClicked"
+                    android:checked="false" />
+                <RadioButton android:id="@+id/camii"
+                    android:textSize="19dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Camii"
+                    android:onClick="onRadioButtonClicked"
+                    android:checked="false" />
+                <RadioButton android:id="@+id/otel"
+                    android:textSize="19dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Otel"
+                    android:onClick="onRadioButtonClicked"
+                    android:checked="false" />
+                <RadioButton android:id="@+id/restoran"
+                    android:textSize="19dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Restoran"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
 
     </LinearLayout>
 
@@ -171,7 +114,18 @@
         android:text="Tara"
         android:id="@+id/search"
         android:layout_gravity="center_vertical"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Bazi Ornek Kelimeler"
+        android:id="@+id/textView9"
+        android:layout_above="@+id/linearLayout4"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

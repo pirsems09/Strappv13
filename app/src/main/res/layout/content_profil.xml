@@ -99,4 +99,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:background="@drawable/da"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:text="Cıkıs"
+        android:id="@+id/cikis"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

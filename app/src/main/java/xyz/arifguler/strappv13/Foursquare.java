@@ -38,8 +38,8 @@ public class Foursquare extends ListActivity {
     final String longtitude = "39.219903";
 
     /*--------------------uyelerden gelen detaylar için bundle aracları----------------------*/
-    String arama,sehir;
-    String alisveris,eylence,yemek,cafe,camii,otel;
+    String arama,sehir,sehir22="cine";
+    String gelen;
 
 
 
@@ -52,18 +52,9 @@ public class Foursquare extends ListActivity {
         paket = getIntent().getExtras();
         sehir= paket.getString("sehir");
         arama= paket.getString("arama");
-        cafe= paket.getString("cafe");
-        camii= paket.getString("camii");
-        yemek= paket.getString("yemek");
-        eylence= paket.getString("eylence");
-        alisveris= paket.getString("alisveris");
-        otel= paket.getString("otel");
-
-        //             temp = makeCall("https://api.foursquare.com/v2/venues/search?near="+arama+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20160316"+"&q="+"Mosque");
+        gelen= paket.getString("ekle");
 
         new fourquare().execute();
-        new fourquare().execute();
-
 
     }
 
@@ -73,41 +64,47 @@ public class Foursquare extends ListActivity {
 
         @Override
         protected String doInBackground(View... urls) {
-        String ekle="";
-            if(otel!="")
-            {
-                ekle+="q=Hotel";
-            }
-            if(cafe!="")
-            {
-                ekle+="&q=Café";
-            }
-            if(camii!="")
-            {
-                ekle+="&q=Mosque";
-            }
-            if(eylence!="")
-            {
-                ekle+="&q=Fun";
-            }
-            if(yemek!="")
-            {
-                ekle+="&q=Food";
-            }
-            if(alisveris!="")
-            {
-                ekle+=alisveris;
-            }
+            if(sehir.length()>=2){
+                if(arama.length()>=2){
+                    //sehir ve arama
+                    temp = makeCall("https://api.foursquare.com/v2/venues/search?near="+sehir+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20160316"+"&query="+arama);
 
+                }
+                else if(gelen.length()>=1){
+                    //arama yok sehir ve radio
+                    temp = makeCall("https://api.foursquare.com/v2/venues/search?near="+sehir+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20160316"+"&query="+gelen);
 
-            temp = makeCall("https://api.foursquare.com/v2/venues/explore?mode=url&near=" + arama + "&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20160316" + "&q=Mosque");
+                }
+                else if(gelen.toString()!="" && arama.toString()!=""){
+                    //arama ve radiobutton a tıklama olduğunda hata olmalı
 
+                }
+                else{
+                    //sadece sehir
+                    temp = makeCall("https://api.foursquare.com/v2/venues/search?near="+sehir+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20160316");
+
+                }
+
+            }
+            /*else if(arama.length()>=1){
+                if(gelen.toString()!=""){
+                    //radio button kulanılarak
+                    Toast.makeText(getBaseContext(),"ikisinide seçtiniz yanlıs yaptınız",Toast.LENGTH_LONG).show();
+                    temp = makeCall("https://api.foursquare.com/v2/venues/search?near="+sehir22+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20160316"+"&query="+gelen);
+
+                }
+                else{
+                    temp = makeCall("https://api.foursquare.com/v2/venues/search?near="+sehir22+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20160316"+"&query="+arama);
+                    //radio button kullanılmadan
+                }
+            }*/
+            else{}
             return "";
         }
 
         @Override
         protected void onPreExecute() {
-                // we can start a progress bar here
+            // we can start a progress bar here
         }
 
         @Override
@@ -120,15 +117,11 @@ public class Foursquare extends ListActivity {
                 venuesList = (ArrayList<FoursquareVenue>) parseFoursquare(temp);
 
                 for (int i = 0; i < venuesList.size(); i++) {
-                    for (int j = i; j < venuesList.size(); j++) {
 
-                        if (listTitle.contains(venuesList.get(j).getName())==false) {
-                            listTitle.add(j, venuesList.get(j).getName());
-                        }
-                    }
+                    listTitle.add(i, venuesList.get(i).getName());
 
                 }
-                    //yerler.add(i, venuesList.get(i).getLat() + ""+ venuesList.get(i).getLng());
+                //yerler.add(i, venuesList.get(i).getLat() + ""+ venuesList.get(i).getLng());
 
                 myAdapter = new ArrayAdapter<String>(Foursquare.this, R.layout.row_layout, R.id.listText, listTitle);
                 setListAdapter(myAdapter);
@@ -224,7 +217,7 @@ public class Foursquare extends ListActivity {
         builder.setNeutralButton("Listeme Ekle", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent(Foursquare.this, MapsActivity.class);
+                Intent i = new Intent(Foursquare.this, List.class);
                 startActivity(i);
             }
         });

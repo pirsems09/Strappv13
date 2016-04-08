@@ -7,4 +7,7 @@
     <string name="title_activity_register">Register</string>
     <string name="title_activity_list">List</string>
     <string name="title_activity_detail_search">DetailSearch</string>
+    <string name="title_activity_comment">Comment</string>
+    <string name="title_activity_comment__list">Comment_List</string>
+    <string name="title_activity__404">_404</string>
 </resources>
