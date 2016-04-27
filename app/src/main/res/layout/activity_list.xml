@@ -25,11 +25,27 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_list"
+        android:id="@+id/fab_home"
         android:layout_width="60dp"
         android:layout_height="70dp"
         android:layout_gravity="bottom|right"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/home" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/list_kayit_ekle"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/save" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/list_look"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/list" />
 
 </android.support.design.widget.CoordinatorLayout>

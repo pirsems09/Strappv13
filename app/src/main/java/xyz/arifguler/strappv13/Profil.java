@@ -1,9 +1,7 @@
 package xyz.arifguler.strappv13;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -13,7 +11,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -44,15 +41,14 @@ public class Profil extends Activity {
 
     private String jsonResult;
     private FloatingActionButton loca,comment,fours;
-    Button cikis;
     private ListView listView;
     ImageView iv;
     int REQUEST_CODE=1;
 
-    private String url = "http://arifguler.xyz/select.php";
+    private String url = "http://arifguler.xyz/foursquare/select.php";
     String kullaniciAdiKontrolu;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
@@ -60,18 +56,6 @@ public class Profil extends Activity {
         loca=(FloatingActionButton)findViewById(R.id.fab2);
         fours=(FloatingActionButton)findViewById(R.id.fab3);
         iv=(ImageView)findViewById(R.id.img);
-        cikis=(Button)findViewById(R.id.cikis);
-        cikis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sharedpreferences = getSharedPreferences(Login.MyPREFERENCES, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.clear();
-                editor.commit();
-                Intent ıntent = new Intent(getApplicationContext(),Giris.class);
-                startActivity(ıntent);
-            }
-        });
 
         loca.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +70,7 @@ public class Profil extends Activity {
 
                 //yorumlar için aktivity oluşturulduğunda yönlendirme yapılacak
 
-                Intent ıntent = new Intent(getApplicationContext(),Comment.class);
+                Intent ıntent = new Intent(getApplicationContext(),Comment_List.class);
                 //ıntent.putExtra("",listView.getPositionForView(v));
                 startActivity(ıntent);
             }
@@ -95,20 +79,19 @@ public class Profil extends Activity {
             @Override
             public void onClick(View v) {
                 Intent ıntent = new Intent(getApplicationContext(),DetailSearch.class);
-                ıntent.putExtra("kAdi",kullaniciAdiKontrolu);
                 startActivity(ıntent);
             }
         });
         //resim ekleme-------------
-       iv.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-               if (i.resolveActivity(getPackageManager()) != null) {
-                   startActivityForResult(i,REQUEST_CODE);
-               }
-           }
-       });
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (i.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(i,REQUEST_CODE);
+                }
+            }
+        });
 
         listView = (ListView) findViewById(R.id.list);
         accessWebService();

@@ -9,6 +9,26 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="xyz.arifguler.strappv13._404">
+    tools:context="xyz.arifguler.strappv13._404"
+    android:background="@drawable/_404"
+    >
+
+    <TextView
+        android:gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="İçerik Bos                                                    Sayfaya Yönlendirilmediniz !"
+        android:id="@+id/textView12"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="59dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_register"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/home" />
 
 </RelativeLayout>

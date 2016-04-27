@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="xyz.arifguler.strappv13.List"
-    tools:showIn="@layout/activity_list">
+    tools:showIn="@layout/activity_list"
+    android:background="@drawable/g4">
 
     <ListView
         android:layout_width="wrap_content"
@@ -28,4 +29,5 @@
         android:id="@+id/textView8"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -2,7 +2,6 @@ package xyz.arifguler.strappv13;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,16 +18,15 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 public class Comment extends AppCompatActivity {
-Bundle bundle=new Bundle();
+    Bundle bundle=new Bundle();
     EditText yorum;
     TextView textView;
     Button save;
-    String cm,cy;
-    static String un="unregistered";
-    private SharedPreferences sharedpreferences;
-
+    String cm,cy,kAdi;
+    ArrayList<String> my_listesi = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +35,15 @@ Bundle bundle=new Bundle();
         yorum=(EditText)findViewById(R.id.yorum_text);
         save=(Button)findViewById(R.id.c_save);
 
-        Bundle paket  = new  Bundle();
-        paket = getIntent().getExtras();
+        Bundle paket  = getIntent().getExtras();
         cy= paket.getString("mekan");
 
-        String un=sharedpreferences.getString("kAdi", null);
+        kAdi=Login.kAdim;
+        my_listesi=Foursquare.yeniListe;
 
-        Toast.makeText(getBaseContext(),un.toString()+
-                "fwfw",Toast.LENGTH_LONG).show();
-        textView.setText(cy+ " mekani hakkinda düşüncelerinizi burada kayit altina alabilirsiniz ");
+
+        //Toast.makeText(getBaseContext(),mekan.toString(),Toast.LENGTH_LONG).show();
+        textView.setText("Mekan Adı : " + cy.toUpperCase());
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +57,9 @@ Bundle bundle=new Bundle();
 
     }
 
-    public class VeriyiYolla  extends AsyncTask<String,Void,String> {
+    public class VeriyiYolla extends AsyncTask<String,Void,String>{
         Context context;
+
         public VeriyiYolla(Context context) {this.context = context;}
 
 
@@ -71,11 +70,11 @@ Bundle bundle=new Bundle();
         protected String doInBackground(String... arg0) {
 
             try{
-                String link="http://arifguler.xyz/Comment.php";
+                String link="http://arifguler.xyz/foursquare/Comment.php";
 
                 String data = URLEncoder.encode("comment", "UTF-8") + "=" + URLEncoder.encode(cm, "UTF-8");
                 data += "&" + URLEncoder.encode("company", "UTF-8") + "=" + URLEncoder.encode(cy, "UTF-8");
-                data += "&" + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(un, "UTF-8");
+                data += "&" + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(kAdi, "UTF-8");
 
                 URL url = new URL(link);
                 URLConnection conn = url.openConnection();
@@ -106,8 +105,8 @@ Bundle bundle=new Bundle();
             if(result.equals("ok"))
             {
                 Toast.makeText(getBaseContext(), "Kayit Yapıldı. ", Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(getApplicationContext(),List.class);
+                intent.putStringArrayListExtra("alinacakListe",my_listesi);
                 startActivity(intent);
 
             }

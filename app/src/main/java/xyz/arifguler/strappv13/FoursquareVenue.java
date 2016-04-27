@@ -42,24 +42,37 @@ public class FoursquareVenue {
 		return name;
 	}
 
+
 	public String getCategory() {
 		return category;
 	}
-
 	public void setCategory(String category) {
 		this.category = category;
 	}
 
-	public  void setAddress(String address){this.address=address;}
-	public String getAddress(){return address;}
+
+	public  void setAddress(String address){
+		this.address=address;
+	}
+	public String getAddress(){
+		return address;
+	}
 
 
-	public void setLat(Double lat){this.lat=lat;}
-	public Double getLat(){return lat;}
+	public void setLat(Double lat){
+		this.lat=lat;
+	}
+	public Double getLat(){
+		return lat;
+	}
 
 
-	public void setLng(Double lng){this.lng=lng;}
-	public Double getLng(){return lng;}
+	public void setLng(Double lng){
+		this.lng=lng;
+	}
+	public Double getLng(){
+		return lng;
+	}
 
 
 }

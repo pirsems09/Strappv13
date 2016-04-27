@@ -66,13 +66,13 @@ public class DetailSearch extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.otel:
                 if (checked){bundle="otel";}
-                    break;
+                break;
             case R.id.cafe:
                 if (checked){bundle="cafe";}
-                    break;
+                break;
             case R.id.camii:
                 if (checked){bundle="camii";}
-                    break;
+                break;
             case R.id.restoran:
                 if (checked){bundle="restoran";}
                 break;

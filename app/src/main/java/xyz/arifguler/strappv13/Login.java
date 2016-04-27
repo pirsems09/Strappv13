@@ -2,7 +2,6 @@ package xyz.arifguler.strappv13;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,9 +23,7 @@ public class Login extends AppCompatActivity {
     EditText userNameET, passWordET;
     Button btnSignUp,btnSignRegister;
     String pw, un;
-
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    SharedPreferences sharedpreferences;
+    public static String kAdim="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +34,6 @@ public class Login extends AppCompatActivity {
         passWordET = (EditText) findViewById(R.id.lpassword);
         btnSignUp = (Button) findViewById(R.id.lgiris);
         btnSignRegister = (Button) findViewById(R.id.lkayitol);
-        /********************------sesions başlangıç-------******************/
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-        /********************------sesions bitiş-------******************/
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +74,7 @@ public class Login extends AppCompatActivity {
         protected String doInBackground(String... arg0) {
 
             try{
-                String link="http://arifguler.xyz/loginn.php";
+                String link="http://arifguler.xyz/foursquare/loginn.php";
 
                 String data = URLEncoder.encode("USERNAME", "UTF-8") + "=" + URLEncoder.encode(un, "UTF-8");
                 data += "&" + URLEncoder.encode("PASSWORD", "UTF-8") + "=" + URLEncoder.encode(pw, "UTF-8");
@@ -115,10 +108,10 @@ public class Login extends AppCompatActivity {
         {
             if(result.equals("ok"))
             {
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString("kAdi", un);
-                editor.commit();
                 Intent intent = new Intent(getApplicationContext(),Profil.class);
+
+                kAdim=un.toString();
+                Toast.makeText(getBaseContext(),kAdim.toString(),Toast.LENGTH_LONG).show();
                 intent.putExtra("kAdi", un.toString());
                 startActivity(intent);
             }

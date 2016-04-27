@@ -64,7 +64,7 @@ public class Register extends AppCompatActivity {
         //if(String.valueOf(sonuc)==toplam.getText().toString()){
 
         //}
-      //  else         Toast.makeText(getBaseContext(),"anlis oldu",Toast.LENGTH_LONG).show();
+        //  else         Toast.makeText(getBaseContext(),"anlis oldu",Toast.LENGTH_LONG).show();
 
         register.setOnClickListener(new View.OnClickListener() {
 
@@ -74,7 +74,8 @@ public class Register extends AppCompatActivity {
                         username.getText().length() != 0 &&
                         mail.getText().length() != 0 &&
                         password.getText().length() != 0 &&
-                        soyisim.getText().length() != 0 && sonuc== Integer.valueOf(toplam.getText().toString())
+                        soyisim.getText().length() != 0 &&
+                        sonuc== Integer.valueOf(toplam.getText().toString())
                         ) {
                     ii = isim.getText().toString();
                     un = username.getText().toString();
@@ -113,7 +114,7 @@ public class Register extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try{
-                String link="http://arifguler.xyz/Register.php";
+                String link="http://arifguler.xyz/foursquare/Register.php";
 
                 String data  = URLEncoder.encode("ISIM", "UTF-8") + "=" + URLEncoder.encode(ii, "UTF-8");
                 data += "&" + URLEncoder.encode("USERNAME", "UTF-8") + "=" + URLEncoder.encode(un, "UTF-8");

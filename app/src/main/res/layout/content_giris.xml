@@ -8,104 +8,122 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="xyz.arifguler.strappv13.Giris"
     tools:showIn="@layout/activity_giris"
-    android:background="@drawable/allback">
+    android:background="@drawable/f10">
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="#Fac241"
-        android:layout_marginBottom="20dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/da"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="48dp"
+        >
         <Button
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="12dp"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
             android:text="Giris"
-            android:background="#0FBBD0"
-            android:textColor="#fff"
+            android:background="#feffff"
+            android:textColor="#444"
             android:id="@+id/g_login"
+            android:textSize="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="20dp"
-            android:layout_toLeftOf="@+id/g_bak"
-            android:layout_toStartOf="@+id/g_bak" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
 
         <Button
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
             android:textSize="19dp"
-            android:background="#ED3838"
-            android:textColor="#fff"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:background="#feffff"
+            android:textColor="#444"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
             android:text="Kayıt"
             android:id="@+id/g_kayit"
             android:layout_gravity="center_vertical"
             android:layout_below="@+id/g_login"
-            android:layout_alignRight="@+id/g_bak"
-            android:layout_alignEnd="@+id/g_bak" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
 
         <Button
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:background="#465F53"
-            android:layout_width="230dp"
-            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#feffff"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
             android:text="MEKAN ARA"
             android:id="@+id/g_bak"
-            android:textColor="#fff"
-            android:layout_above="@+id/g_kayit"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:textColor="#444"
             android:textSize="19dp"
-            android:layout_alignTop="@+id/g_login" />
+            android:layout_below="@+id/g_kayit"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
 
         <Button
-            android:textColor="#fff"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#444"
             android:textSize="19dp"
-            android:layout_marginTop="5dp"
-            android:background="#BB5982"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:background="#feffff"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
             android:text="YER ARA"
             android:id="@+id/g_map"
-            android:layout_below="@+id/g_listem"
+            android:layout_below="@+id/g_bak"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/g_bak"
-            android:layout_alignEnd="@+id/g_bak" />
-
-        <Button
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#fff"
-            android:background="#4E65E8"
-            android:layout_width="230dp"
-            android:layout_height="70dp"
-            android:text="Benim Listem"
-            android:textSize="19dp"
-            android:id="@+id/g_listem"
-            android:layout_below="@+id/g_login"
+            android:layout_marginRight="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_below="@+id/g_map"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/g_kayit"
-            android:layout_toStartOf="@+id/g_kayit" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+
+            >
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:background="#feffff"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Profilim"
+                android:id="@+id/giris_profil"
+                android:layout_below="@+id/g_map"
+                android:layout_alignLeft="@+id/g_map"
+                android:layout_alignStart="@+id/g_map"
+                android:layout_gravity="left"
+                />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:background="#feffff"
+                android:layout_height="wrap_content"
+                android:text="Listem"
+                android:id="@+id/giris_liste"
+                android:layout_below="@+id/g_map"
+                android:layout_alignRight="@+id/g_map"
+                android:layout_alignEnd="@+id/g_map"
+                android:layout_width="150dp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="right"
+                />
+        </LinearLayout>
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Arif Guler"
-        android:id="@+id/textView2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="43dp" />
+
 
 </RelativeLayout>

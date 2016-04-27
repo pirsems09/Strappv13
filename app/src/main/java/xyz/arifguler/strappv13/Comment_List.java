@@ -29,10 +29,9 @@ import java.util.List;
 
 public class Comment_List extends AppCompatActivity {
     ListView listView;
-    String un;
-
+    String un="";
     public List<String> profillist = new ArrayList<String>();
-    private String url = "http://arifguler.xyz/CommentList.php";
+    private String url = "http://arifguler.xyz/foursquare/CommentList.php";
     private String jsonResult;
 
     @Override
@@ -40,15 +39,9 @@ public class Comment_List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment__list);
 
-        Bundle paket  = new  Bundle();
-        paket = getIntent().getExtras();
-        un= paket.getString("kAdi");
-
-        //Toast.makeText(getBaseContext(),mekan.toString(),Toast.LENGTH_LONG).show();
-
-        listView = (ListView) findViewById(R.id.list);
+        listView = (ListView) findViewById(R.id.comment_list);
+        un=Login.kAdim;
         accessWebService();
-
 
     }
 
@@ -58,7 +51,7 @@ public class Comment_List extends AppCompatActivity {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(params[0]);
 
-            java.util.List<NameValuePair> eklenecek =new ArrayList<NameValuePair>(0);
+            List<NameValuePair> eklenecek =new ArrayList<NameValuePair>(0);
             eklenecek.add(new BasicNameValuePair("username",un));
 
             try {
@@ -115,14 +108,9 @@ public class Comment_List extends AppCompatActivity {
             for (int i = 0; i < jsonMainNode.length(); i++) {
 
                 JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
-                String isim = jsonChildNode.optString("yorum");
-                String username = jsonChildNode.optString("companyName");
+                String yorum = jsonChildNode.optString("yorum")+"\n"+jsonChildNode.optString("companyName");
 
-
-
-                profillist.add(username);
-                profillist.add(isim);
-
+                profillist.add(yorum);
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                         this,

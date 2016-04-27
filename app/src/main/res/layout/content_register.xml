@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="xyz.arifguler.strappv13.Register"
     tools:showIn="@layout/activity_register"
-    android:background="@drawable/allback">
+    android:background="@drawable/f10"
+   >
     <TextView
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/Register"
-        android:layout_width="match_parent"
+        android:layout_marginTop="65dp"
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Register"
+        android:text="Login"
         android:textColor="#000"
         android:textSize="30dp" />
 
     <android.support.design.widget.TextInputLayout
-        android:layout_marginTop="10dp"
         android:id="@+id/name1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -39,7 +33,6 @@
 
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
-        android:layout_marginTop="10dp"
         android:id="@+id/name2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -106,7 +99,6 @@
         android:id="@+id/sorgu" />
 
     <EditText
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -114,11 +106,12 @@
         android:id="@+id/toplam"
         android:layout_gravity="center_horizontal" />
 
-    <Button android:id="@+id/rregister"
+    <Button
+        android:id="@+id/rregister"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="Kayit Ol"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
         android:layout_gravity="center_horizontal" />
 
